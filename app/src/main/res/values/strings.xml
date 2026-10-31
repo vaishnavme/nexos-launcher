@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">NexOS Launcher</string>
+    <string name="dock_phone">Phone</string>
+    <string name="dock_music">Music</string>
+    <string name="dock_maps">Maps</string>
+    <string name="dock_radio">Radio</string>
+    <string name="dock_apps">Apps</string>
+    <string name="home_now_playing">Now Playing</string>
+    <string name="home_placeholder">Factory radio, media, and widgets will appear here.</string>
+    <string name="home_display_metrics">Display: %1$d × %2$d @ %3$d dpi</string>
+    <string name="status_bluetooth">Bluetooth</string>
+    <string name="status_wifi">Wi‑Fi</string>
+    <string name="radio_not_found">Factory Radio app not found</string>
+    <string name="eq_not_found">Factory EQ app not found</string>
+    <string name="phone_not_found">Phone app not found</string>
+    <string name="music_not_found">Music app not found</string>
+    <string name="maps_not_found">Maps app not found</string>
+    <string name="apps_empty">No apps found</string>
+    <string name="radio_unsupported">Opens factory Radio. Tuning is not available until OEM intents are known.</string>
+</resources>

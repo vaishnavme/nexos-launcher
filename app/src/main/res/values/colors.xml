@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#FF0E0E10</color>
+    <color name="charcoal">#FF1C1C1E</color>
+    <color name="charcoal_elevated">#FF2C2C2E</color>
+    <color name="grey">#FF8E8E93</color>
+    <color name="grey_muted">#FF636366</color>
+    <color name="accent_blue">#FF3B82F6</color>
+    <color name="accent_blue_soft">#333B82F6</color>
+</resources>

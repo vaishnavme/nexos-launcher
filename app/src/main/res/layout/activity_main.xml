@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/status_bar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/status_bar_height"
+        android:background="@color/charcoal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_status"
+            tools:text="21:40" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/status_bluetooth"
+            android:layout_width="@dimen/status_icon_size"
+            android:layout_height="@dimen/status_icon_size"
+            android:contentDescription="@string/status_bluetooth"
+            android:src="@drawable/ic_bluetooth" />
+
+        <ImageView
+            android:id="@+id/status_wifi"
+            android:layout_width="@dimen/status_icon_size"
+            android:layout_height="@dimen/status_icon_size"
+            android:layout_marginStart="@dimen/status_icon_spacing"
+            android:contentDescription="@string/status_wifi"
+            android:src="@drawable/ic_wifi" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dock"
+        style="@style/Widget.NexOS.Dock"
+        android:layout_width="@dimen/dock_width"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/status_bar">
+
+        <LinearLayout
+            android:id="@+id/dock_phone"
+            style="@style/Widget.NexOS.DockButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dock_item_height">
+
+            <ImageView
+                android:layout_width="@dimen/dock_icon_size"
+                android:layout_height="@dimen/dock_icon_size"
+                android:contentDescription="@string/dock_phone"
+                android:src="@drawable/ic_phone" />
+
+            <TextView
+                style="@style/Widget.NexOS.DockLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/dock_phone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dock_music"
+            style="@style/Widget.NexOS.DockButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dock_item_height">
+
+            <ImageView
+                android:layout_width="@dimen/dock_icon_size"
+                android:layout_height="@dimen/dock_icon_size"
+                android:contentDescription="@string/dock_music"
+                android:src="@drawable/ic_music" />
+
+            <TextView
+                style="@style/Widget.NexOS.DockLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/dock_music" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dock_maps"
+            style="@style/Widget.NexOS.DockButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dock_item_height">
+
+            <ImageView
+                android:layout_width="@dimen/dock_icon_size"
+                android:layout_height="@dimen/dock_icon_size"
+                android:contentDescription="@string/dock_maps"
+                android:src="@drawable/ic_maps" />
+
+            <TextView
+                style="@style/Widget.NexOS.DockLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/dock_maps" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dock_radio"
+            style="@style/Widget.NexOS.DockButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dock_item_height">
+
+            <ImageView
+                android:layout_width="@dimen/dock_icon_size"
+                android:layout_height="@dimen/dock_icon_size"
+                android:contentDescription="@string/dock_radio"
+                android:src="@drawable/ic_radio" />
+
+            <TextView
+                style="@style/Widget.NexOS.DockLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/dock_radio" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/dock_apps"
+            style="@style/Widget.NexOS.DockButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dock_item_height">
+
+            <ImageView
+                android:layout_width="@dimen/dock_icon_size"
+                android:layout_height="@dimen/dock_icon_size"
+                android:contentDescription="@string/dock_apps"
+                android:src="@drawable/ic_apps" />
+
+            <TextView
+                style="@style/Widget.NexOS.DockLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/dock_apps" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/content_container"
+        android:name="com.vaishnavs.nexoslauncher.ui.home.HomeFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/content_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/dock"
+        app:layout_constraintTop_toBottomOf="@id/status_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
