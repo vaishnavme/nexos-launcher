@@ -25,4 +25,8 @@
     <dimen name="corner_radius">20dp</dimen>
     <dimen name="status_icon_size">18dp</dimen>
     <dimen name="status_icon_spacing">12dp</dimen>
+    <dimen name="file_source_width">180dp</dimen>
+    <dimen name="file_source_height">48dp</dimen>
+    <dimen name="file_row_height">64dp</dimen>
+    <dimen name="file_action_size">48dp</dimen>
 </resources>
