@@ -1,5 +1,6 @@
 package com.vaishnavs.nexoslauncher.system
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -73,6 +74,11 @@ class OemAppResolver(
         return startSafely(context, geo)
     }
 
+    fun launchTlink(context: Context): Boolean {
+        if (launchFirst(context, OemPackages.tlink)) return true
+        return launchByLabelContains(context, OemPackages.tlinkLabels)
+    }
+
     fun launchMusic(context: Context): Boolean {
         if (launchFirst(context, OemPackages.music)) return true
         if (launchByLabelContains(context, OemPackages.musicLabels)) return true
@@ -81,6 +87,63 @@ class OemAppResolver(
             Intent.CATEGORY_APP_MUSIC
         ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         return startSafely(context, selector)
+    }
+
+    fun resolvePhone(): ComponentName? {
+        resolveByPackages(OemPackages.bluetooth)?.let { return it }
+        resolveByLabels(OemPackages.phoneLabels)?.let { return it }
+        val dial = Intent(Intent.ACTION_DIAL)
+        return packageManager.resolveActivity(dial, PackageManager.MATCH_DEFAULT_ONLY)?.let { info ->
+            ComponentName(info.activityInfo.packageName, info.activityInfo.name)
+        }
+    }
+
+    fun resolveMusic(): ComponentName? {
+        resolveByPackages(OemPackages.music)?.let { return it }
+        resolveByLabels(OemPackages.musicLabels)?.let { return it }
+        return resolveSelector(Intent.CATEGORY_APP_MUSIC)
+    }
+
+    fun resolveMaps(): ComponentName? {
+        resolveByPackages(OemPackages.maps)?.let { return it }
+        resolveByLabels(OemPackages.mapsLabels)?.let { return it }
+        return resolveSelector(Intent.CATEGORY_APP_MAPS)
+    }
+
+    fun resolveRadio(): ComponentName? {
+        resolveByPackages(OemPackages.radio)?.let { return it }
+        return resolveByLabels(OemPackages.radioLabels)
+    }
+
+    fun resolveTlink(): ComponentName? {
+        resolveByPackages(OemPackages.tlink)?.let { return it }
+        return resolveByLabels(OemPackages.tlinkLabels)
+    }
+
+    fun resolveEq(): ComponentName? {
+        resolveByPackages(OemPackages.eq)?.let { return it }
+        return resolveByLabels(OemPackages.eqLabels)
+    }
+
+    private fun resolveByPackages(packages: List<String>): ComponentName? {
+        val packageName = findInstalled(packages) ?: return null
+        return packageManager.getLaunchIntentForPackage(packageName)?.component
+    }
+
+    private fun resolveByLabels(keywords: List<String>): ComponentName? {
+        val launchIntent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+        val match = packageManager.queryIntentActivities(launchIntent, 0).firstOrNull { resolveInfo ->
+            val label = resolveInfo.loadLabel(packageManager).toString().lowercase()
+            keywords.any { keyword -> label.contains(keyword) }
+        } ?: return null
+        return ComponentName(match.activityInfo.packageName, match.activityInfo.name)
+    }
+
+    private fun resolveSelector(category: String): ComponentName? {
+        val intent = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, category)
+        return packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)?.let { info ->
+            ComponentName(info.activityInfo.packageName, info.activityInfo.name)
+        }
     }
 
     private fun startSafely(context: Context, intent: Intent): Boolean {

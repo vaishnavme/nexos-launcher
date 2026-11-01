@@ -33,4 +33,12 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun iconFor(app: AppInfo) = repository.loadIcon(app)
+
+    fun topMatches(query: String): List<AppInfo> {
+        val trimmed = query.trim()
+        if (trimmed.isEmpty()) return emptyList()
+        return apps.value
+            .filter { it.label.contains(trimmed, ignoreCase = true) }
+            .take(3)
+    }
 }

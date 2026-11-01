@@ -1,39 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_content_panel"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="@dimen/content_padding">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/now_playing_title"
+    <ImageView
+        android:id="@+id/hero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nexon_hero"
+        app:layout_constraintBottom_toTopOf="@id/tiles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/speed_block"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/speed_block"
+        android:layout_width="@dimen/speed_arc_size"
+        android:layout_height="@dimen/speed_arc_size"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toTopOf="@id/tiles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.vaishnavs.nexoslauncher.ui.widget.SpeedArcView
+            android:id="@+id/speed_arc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/speed_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                tools:text="62" />
+
+            <TextView
+                android:id="@+id/speed_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/speed_unit"
+                android:textColor="@color/grey"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/gear_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/gear_drive"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/clock_block"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/home_now_playing"
-        android:textColor="@color/white"
-        android:textSize="22sp" />
+        android:gravity="end"
+        android:orientation="vertical"
+        android:paddingTop="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/now_playing_placeholder"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/home_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_time"
+            tools:text="10:24 AM" />
+
+        <TextView
+            android:id="@+id/home_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            tools:text="Mon, 15 Apr" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tiles"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="@string/home_placeholder"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/text_body" />
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/display_metrics"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/grey_muted"
-        android:textSize="@dimen/text_caption"
-        tools:text="Display: 800 × 480 @ 160 dpi" />
+        <include
+            android:id="@+id/tile_wifi"
+            layout="@layout/item_home_tile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/home_tile_height"
+            android:layout_margin="4dp"
+            android:layout_weight="1" />
 
-</LinearLayout>
+        <include
+            android:id="@+id/tile_bluetooth"
+            layout="@layout/item_home_tile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/home_tile_height"
+            android:layout_margin="4dp"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/tile_tlink"
+            layout="@layout/item_home_tile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/home_tile_height"
+            android:layout_margin="4dp"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/tile_stereo"
+            layout="@layout/item_home_tile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/home_tile_height"
+            android:layout_margin="4dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

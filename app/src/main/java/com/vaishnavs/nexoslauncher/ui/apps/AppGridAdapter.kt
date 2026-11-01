@@ -28,7 +28,9 @@ class AppGridAdapter(
         fun bind(app: AppInfo) {
             binding.appLabel.text = app.label
             binding.appIcon.setImageDrawable(iconProvider(app))
-            binding.root.setOnClickListener { onAppClicked(app) }
+            binding.root.setOnClickListener(null)
+            binding.root.isClickable = false
+            binding.appHitTarget.setOnClickListener { onAppClicked(app) }
         }
     }
 

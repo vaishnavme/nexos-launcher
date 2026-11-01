@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:gravity="center_horizontal"
-    android:minHeight="88dp"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:clickable="false"
+    android:focusable="false"
+    android:paddingTop="16dp"
+    android:paddingBottom="8dp">
 
-    <ImageView
-        android:id="@+id/app_icon"
-        android:layout_width="@dimen/app_icon_size"
-        android:layout_height="@dimen/app_icon_size"
-        android:contentDescription="@null"
-        tools:src="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/app_label"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/app_hit_target"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:maxLines="2"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_dock"
-        tools:text="Radio" />
+        android:layout_gravity="center_horizontal"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <com.vaishnavs.nexoslauncher.ui.widget.SquircleImageView
+            android:id="@+id/app_icon"
+            android:layout_width="@dimen/app_icon_size"
+            android:layout_height="@dimen/app_icon_size"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/app_label"
+            android:layout_width="@dimen/app_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            tools:text="Radio" />
+    </LinearLayout>
+
+</FrameLayout>

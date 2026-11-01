@@ -52,4 +52,11 @@ object OemPackages {
     val musicLabels = listOf("music", "audio player")
     val phoneLabels = listOf("bluetooth", "phone", "bt")
     val mapsLabels = listOf("maps", "map", "navigation", "navi")
+    val tlink = listOf(
+        "com.zjinnova.zlink",
+        "com.carletter.link",
+        "com.es.tlink",
+        "com.autoai.tlink"
+    )
+    val tlinkLabels = listOf("tlink", "carlink", "carplay", "zlink", "autokit")
 }

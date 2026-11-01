@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dock_item_height"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+    <com.vaishnavs.nexoslauncher.ui.widget.SquircleImageView
+        android:id="@+id/dock_icon"
+        android:layout_width="@dimen/dock_icon_size"
+        android:layout_height="@dimen/dock_icon_size"
+        android:layout_gravity="center"
+        tools:src="@mipmap/ic_launcher" />
+
+</FrameLayout>

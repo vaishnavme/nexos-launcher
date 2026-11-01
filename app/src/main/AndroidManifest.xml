@@ -6,9 +6,13 @@
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
         android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
@@ -52,17 +56,47 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTask"
+            android:resumeWhilePausing="true"
             android:screenOrientation="landscape"
             android:stateNotNeeded="true"
+            android:taskAffinity=""
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="true"
+            android:icon="@drawable/ic_nexos"
+            android:label="@string/settings_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:taskAffinity="com.vaishnavs.nexoslauncher.settings"
+            android:theme="@style/Theme.NexOSLauncher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.settings.DockSlotsActivity"
+            android:exported="false"
+            android:label="@string/settings_left_dock"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.NexOSLauncher" />
+        <activity
+            android:name=".ui.settings.DockAppPickerActivity"
+            android:exported="false"
+            android:label="@string/settings_choose_app"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.NexOSLauncher" />
     </application>
 
 </manifest>

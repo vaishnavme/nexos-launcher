@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 800x480 landscape baseline. Confirm densityDpi on the head unit before locking px sizes. -->
-    <dimen name="status_bar_height">40dp</dimen>
-    <dimen name="dock_width">96dp</dimen>
-    <dimen name="dock_item_height">72dp</dimen>
-    <dimen name="dock_icon_size">28dp</dimen>
-    <dimen name="status_icon_size">20dp</dimen>
+    <!-- 800x480 landscape mockup baseline. -->
+    <dimen name="shell_margin">8dp</dimen>
+    <dimen name="dock_width">64dp</dimen>
+    <dimen name="dock_item_height">56dp</dimen>
+    <dimen name="dock_icon_size">44dp</dimen>
+    <dimen name="dock_control_size">44dp</dimen>
     <dimen name="content_padding">16dp</dimen>
-    <dimen name="app_icon_size">56dp</dimen>
-    <dimen name="app_cell_width">88dp</dimen>
-    <dimen name="text_status">18sp</dimen>
+    <dimen name="app_icon_size">64dp</dimen>
+    <dimen name="app_cell_width">140dp</dimen>
+    <dimen name="search_button_size">40dp</dimen>
+    <dimen name="settings_row_height">72dp</dimen>
+    <dimen name="settings_icon_size">40dp</dimen>
+    <dimen name="settings_divider_height">1dp</dimen>
+    <dimen name="settings_divider_inset">68dp</dimen>
+    <dimen name="home_tile_height">72dp</dimen>
+    <dimen name="speed_arc_size">150dp</dimen>
+    <dimen name="text_status">16sp</dimen>
     <dimen name="text_dock">12sp</dimen>
     <dimen name="text_body">16sp</dimen>
     <dimen name="text_caption">13sp</dimen>
-    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="text_apps_title">26sp</dimen>
+    <dimen name="text_time">28sp</dimen>
+    <dimen name="corner_radius">20dp</dimen>
+    <dimen name="status_icon_size">18dp</dimen>
     <dimen name="status_icon_spacing">12dp</dimen>
 </resources>

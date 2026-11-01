@@ -26,6 +26,22 @@ class AndroidAudioGateway(
         )
     }
 
+    override fun raiseVolume() {
+        audioManager.adjustStreamVolume(
+            AudioManager.STREAM_MUSIC,
+            AudioManager.ADJUST_RAISE,
+            0
+        )
+    }
+
+    override fun lowerVolume() {
+        audioManager.adjustStreamVolume(
+            AudioManager.STREAM_MUSIC,
+            AudioManager.ADJUST_LOWER,
+            0
+        )
+    }
+
     override fun openEq(context: Context): Boolean {
         if (oemAppResolver.launchFirst(context, OemPackages.eq)) return true
         return oemAppResolver.launchByLabelContains(context, OemPackages.eqLabels)

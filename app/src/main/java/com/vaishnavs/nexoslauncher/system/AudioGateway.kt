@@ -10,5 +10,7 @@ interface AudioGateway {
     fun getMediaVolume(): Int
     fun getMaxMediaVolume(): Int
     fun setMediaVolume(level: Int)
+    fun raiseVolume()
+    fun lowerVolume()
     fun openEq(context: Context): Boolean
 }
