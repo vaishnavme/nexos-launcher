@@ -3,6 +3,7 @@ package com.vaishnavs.nexoslauncher.system
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import com.vaishnavs.nexoslauncher.ui.files.FileManagerActivity
 import com.vaishnavs.nexoslauncher.ui.settings.SettingsActivity
 
 object AppIntents {
@@ -12,6 +13,15 @@ object AppIntents {
         ) {
             context.startActivity(
                 Intent(context, SettingsActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            )
+            return
+        }
+        if (component.packageName == context.packageName &&
+            component.className == FileManagerActivity::class.java.name
+        ) {
+            context.startActivity(
+                Intent(context, FileManagerActivity::class.java)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             )
             return

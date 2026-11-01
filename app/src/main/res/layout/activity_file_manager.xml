@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/file_source_width"
+        android:layout_height="match_parent"
+        android:background="@color/charcoal"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/files_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/files_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_apps_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/source_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/up_button"
+                android:layout_width="@dimen/search_button_size"
+                android:layout_height="@dimen/search_button_size"
+                android:background="@drawable/bg_circle"
+                android:contentDescription="@string/files_up"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_up" />
+
+            <TextView
+                android:id="@+id/path_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:ellipsize="start"
+                android:fontFamily="sans-serif-medium"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_body"
+                tools:text="Internal / Music" />
+
+            <ImageButton
+                android:id="@+id/sort_button"
+                android:layout_width="@dimen/search_button_size"
+                android:layout_height="@dimen/search_button_size"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_circle"
+                android:contentDescription="@string/files_sort"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_sort" />
+
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="@dimen/search_button_size"
+                android:layout_height="@dimen/search_button_size"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_circle"
+                android:contentDescription="@string/search"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_search" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_spotlight"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="4dp"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_search" />
+
+            <EditText
+                android:id="@+id/search_input"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/search"
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/text_body" />
+
+            <ImageButton
+                android:id="@+id/search_close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/search_close"
+                android:padding="8dp"
+                android:src="@drawable/ic_close" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/file_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_settings_group"
+                android:clipToPadding="false"
+                android:overScrollMode="never" />
+
+            <TextView
+                android:id="@+id/empty_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/files_empty"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_body"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/permission_panel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_settings_group"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/files_permission_title"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_body" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/files_permission_body"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_caption" />
+
+                <TextView
+                    android:id="@+id/grant_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_dock_control"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/files_permission_grant"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_body" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/file_action_size"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/copy_button"
+                    android:layout_width="@dimen/file_action_size"
+                    android:layout_height="@dimen/file_action_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/files_copy"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_copy" />
+
+                <ImageButton
+                    android:id="@+id/cut_button"
+                    android:layout_width="@dimen/file_action_size"
+                    android:layout_height="@dimen/file_action_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/files_cut"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_cut" />
+
+                <ImageButton
+                    android:id="@+id/paste_button"
+                    android:layout_width="@dimen/file_action_size"
+                    android:layout_height="@dimen/file_action_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/files_paste"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_paste" />
+
+                <ImageButton
+                    android:id="@+id/delete_button"
+                    android:layout_width="@dimen/file_action_size"
+                    android:layout_height="@dimen/file_action_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/files_delete"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_delete" />
+
+                <ImageButton
+                    android:id="@+id/rename_button"
+                    android:layout_width="@dimen/file_action_size"
+                    android:layout_height="@dimen/file_action_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/files_rename"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_rename" />
+
+                <ImageButton
+                    android:id="@+id/mkdir_button"
+                    android:layout_width="@dimen/file_action_size"
+                    android:layout_height="@dimen/file_action_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/files_new_folder"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_add" />
+
+                <TextView
+                    android:id="@+id/done_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/file_action_size"
+                    android:background="@drawable/bg_dock_control"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/files_done"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_body"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+</LinearLayout>
